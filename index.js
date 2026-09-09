@@ -55,3 +55,50 @@ function displayResults(movies) {
 
 // Assuming you have a button to trigger the fetchMovies function
 document.getElementById("search-button").addEventListener("click", fetchMovies);
+
+const yearRange = document.getElementById("yearRange");
+const yearValue = document.getElementById("yearValue");
+const movieList = document.getElementById("movieList");
+
+async function displayMovies(searchTerm) {
+  const movies = await fetchMovies(searchTerm);
+
+  // Sort movies by year
+  movies.sort((a, b) => parseInt(a.Year) - parseInt(b.Year));
+
+  const movieList = document.getElementById("movieList");
+  movieList.innerHTML = ""; // Clear previous results
+
+  movies.forEach((movie) => {
+    const movieItem = document.createElement("div");
+    movieItem.innerHTML = `
+            <h3>${movie.Title} (${movie.Year})</h3>
+            <img src="${movie.Poster}" alt="${movie.Title} Poster">
+        `;
+    movieList.appendChild(movieItem);
+  });
+}
+
+// Call displayMovies with a search term, e.g. when a button is clicked
+function displayMovies(year) {
+  movieList.innerHTML = ""; // Clear Previous Results
+  const filteredMovies = movies.filter((movie) => movie.year <= year);
+  filteredMovies.forEach((movie) => {
+    const movieElement = document.createElement("div");
+    movieElement.innerHTML = `
+      <h3>${movie.Title}</h3>
+      <p>Year: ${movie.Year}</p>
+    `;
+    movieList.appendChild(movieElement);
+  });
+}
+
+// Event Listener for the Slider
+yearRange.addEventListener("input", () => {
+  const year = parseInt(yearRange.value);
+  yearValue.textContent = year;
+  displayMovies(year);
+});
+
+//Initial Display
+function display(movies) {}
