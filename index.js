@@ -1,3 +1,9 @@
+// Burger Menu
+document.getElementById("burgerMenu").addEventListener("click", function () {
+  const navLinks = document.getElementById("navLinks");
+  navLinks.classList.toggle("active");
+});
+
 const apiKey = "92a7848e"; // Your OMDb API key
 const searchInput = document.getElementById("search-input");
 const loadingIndicator = document.getElementById("loading");
