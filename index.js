@@ -75,7 +75,16 @@ async function displayMovies(searchTerm) {
   const movieList = document.getElementById("movieList");
   movieList.innerHTML = ""; // Clear previous results
 
-  movies.forEach((movie) => {
+  // Display movies based on the selected year range
+  function displayMovies(year) {
+    movieList.innerHTML = ""; // Clear Previous Results
+  }
+
+  //Filter movies based on the selected year range
+  const filteredMovies = movies.filter((movie) => parseInt(movie.Year) <= year);
+
+  //Display filtered movies
+  filteredMovies.forEach((movie) => {
     const movieItem = document.createElement("div");
     movieItem.innerHTML = `
             <h3>${movie.Title} (${movie.Year})</h3>
@@ -102,9 +111,14 @@ function displayMovies(year) {
 // Event Listener for the Slider
 yearRange.addEventListener("input", () => {
   const year = parseInt(yearRange.value);
-  yearValue.textContent = year;
-  displayMovies(year);
+  yearValue.textContent = year; //Update the displayed year value
+  displayMovies(year); // Call the displayMovies function with the selected year
 });
+
+//Initial Display
+function initialDisplay() {
+  displayMovies(parseInt(yearRange.value)); // Display movies based on the initial slider value
+}
 
 //Initial Display
 function display(movies) {}
