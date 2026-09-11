@@ -11,7 +11,7 @@ li {
   list-style-type: none;
 }
 
-nav ul {
+.nav__link--list {
   list-style: none;
   display: flex;
   justify-content: space-between;
@@ -55,10 +55,6 @@ nav {
   position: absolute;
   left: 24px;
   top: 24px;
-}
-
-.nav__link--list {
-  display: flex;
 }
 
 .nav__link {
@@ -224,7 +220,7 @@ RESPONSIVENESS
 }
 
 @media (max-width: 768px) {
-  nav ul {
+  .nav__link--list {
     display: none;
     flex-direction: column;
     position: absolute;
@@ -234,7 +230,7 @@ RESPONSIVENESS
     width: 100%;
   }
 
-  nav ul.active {
+  .nav__link--list.active {
     display: flex;
   }
 
