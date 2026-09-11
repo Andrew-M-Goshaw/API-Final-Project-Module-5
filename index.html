@@ -49,6 +49,7 @@
         <h1>Welcome to Our Movie Finder</h1>
         <h2>Discover the perfect movie for your needs!</h2>
       </section>
+    <main>
       <section id="search-section">
         <div class="search-container">
         <input
@@ -58,7 +59,6 @@
         />
         <button id="search-button" onclick="fetchMovies()">Search</button>
         <div class="movie" id="loading" style="display: none">Loading...</div>
-        <main>
           <label for="yearRange">Select Release Year Range:</label>
           <input type="range" id="yearRange" min="1900" max="2026" value="2026" onchange="" />
           <span id="yearValue">2026</span>
